@@ -1,0 +1,2 @@
+BASEDIR="/var/lib/dehydrated"
+DOMAINS_TXT="/etc/dehydrated/domains.txt"
