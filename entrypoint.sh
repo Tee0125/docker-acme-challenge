@@ -23,18 +23,16 @@ last=`date +%y%m%d`
 
 while [ 1 ] ; do
     cur=`date +%y%m%d`
+
     if [ $last != $cur ]; then
-        continue
-    fi
-
-    d=`date +%d`
-    if [ $d == "1" ] || [ $d == "15" ] ; then
-        /opt/dehydrated/dehydrated --cron                   \
-                   --hook /opt/hook/hook.py \
-                   --challenge dns-01
-
-        echo $? returned
-        last=`date +%y%m%d`
+        d=`date +%d`
+        if [ $d == "1" ] || [ $d == "15" ] ; then
+            /opt/dehydrated/dehydrated --cron   \
+                       --hook /opt/hook/hook.py \
+                       --challenge dns-01
+    
+            last=`date +%y%m%d`
+        fi
     fi
 
     sleep 3600
